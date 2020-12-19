@@ -1,0 +1,207 @@
+body {
+  overflow: hidden;
+  background-color: #232129;
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  background-image: url("../images/background_JuhoPuurunen.png");
+  background-repeat: no-repeat;
+  font-family: 'IBM Plex Sans', sans-serif;
+}
+
+header {
+  width: 100%;
+  height: 150px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0;
+  padding: 5px;
+  z-index: 200;
+  color: aliceblue;
+  text-shadow: 3px 3px #2f4f4f;
+  letter-spacing: 3px;
+}
+
+.sideDiv {
+  margin: 40px;
+  position: absolute;
+  height: 10em;
+  margin-top: -5em;
+  left: 20px;
+  bottom: 140px;
+}
+
+.LinkedinLogo {
+  width: 150px;
+  -webkit-filter: drop-shadow(2px 2px 2px #2f4f4f);
+  filter: drop-shadow(2px 2px 2px #2f4f4f);
+}
+
+.LinkedinLogo:hover {
+  margin-left: 20px;
+}
+
+.GithubLogo {
+  width: 150px;
+  -webkit-filter: drop-shadow(2px 2px 2px #2f4f4f);
+  filter: drop-shadow(2px 2px 2px #2f4f4f);
+}
+
+.GithubLogo:hover {
+  margin-left: 20px;
+}
+
+.adobes {
+  position: absolute;
+  right: 100px;
+  bottom: 30px;
+  overflow: hidden;
+  width: 100px;
+  height: 70px;
+  margin: 0px;
+  float: right;
+}
+
+.codeLogo {
+  height: 50px;
+  width: 50px;
+  margin: 10px;
+  float: right;
+}
+
+.CreativeCloudLogo {
+  height: 50px;
+  width: 70px;
+  margin: 10px;
+  float: right;
+}
+
+.codes {
+  position: absolute;
+  right: 100px;
+  bottom: 100px;
+  overflow: hidden;
+  height: 70px;
+  width: 70px;
+  margin: 0px;
+}
+
+.logo {
+  height: 50px;
+  margin: 10px;
+  float: right;
+}
+
+.adobelogo {
+  height: 50px;
+  margin: 10px;
+  width: 50px;
+  float: right;
+}
+
+.about:hover {
+  font-style: italic;
+}
+
+a:hover {
+  font-style: italic;
+}
+
+.text {
+  font-size: 1rem;
+  margin: 10px 0px 10px 0px;
+  text-shadow: 1px 1px #2f4f4f;
+}
+
+.text:hover {
+  font-style: italic;
+}
+
+.profile {
+  width: 600px;
+  height: 170px;
+  position: absolute;
+  top: 200px;
+  left: 150px;
+}
+
+#text {
+  font-family: Consolas, monaco , monospace;
+  color: #f0f8ff;
+  font-size: 1.2em;
+  text-shadow: 3px 3px #2f4f4f;
+}
+
+#cursor {
+  font-family: Consolas, monaco , monospace;
+  color: #f0f8ff;
+  font-style: bold;
+  font-size: 1.2em;
+}
+
+@media only screen and (max-width: 1024px) {
+  body {
+    background-position: center top;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+  }
+  header {
+    height: 100px;
+    width: 100%;
+    padding: 0px;
+    top: 20px;
+  }
+  .profile {
+    width: 70vw;
+    height: 40vh;
+    position: absolute;
+    top: 120px;
+    left: 40px;
+  }
+  .sideDiv {
+    left: 0px;
+  }
+  #text {
+    font-family: Consolas, monaco , monospace;
+    color: #f0f8ff;
+    font-size: .8em;
+  }
+  #cursor {
+    font-family: Consolas, monaco , monospace;
+    color: #f0f8ff;
+    font-style: bold;
+    font-size: .8em;
+  }
+  .LinkedinLogo {
+    width: 100px;
+  }
+  .GithubLogo {
+    width: 100px;
+  }
+  .aboutDrop {
+    height: 0;
+    opacity: 0;
+    margin: 0;
+    overflow: hidden;
+  }
+  .codes {
+    position: absolute;
+    left: 30px;
+    bottom: 10px;
+    display: flex;
+    flex-flow: row wrap-reverse;
+  }
+  .adobes {
+    position: absolute;
+    left: 100px;
+    bottom: 10px;
+    display: flex;
+    flex-direction: column-reverse;
+  }
+  .logo {
+    height: 50px;
+    margin: 10px;
+  }
+}
