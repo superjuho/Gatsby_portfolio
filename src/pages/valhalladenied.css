@@ -1,0 +1,45 @@
+.valhallaDenied {
+  width: 100vw;
+  height: 100vh;
+}
+
+header {
+  z-index: 9001;
+}
+
+.backSpace {
+  display: inline;
+  z-index: 9001;
+  position: absolute;
+  top: 20px;
+  left: 100px;
+  height: 50px;
+  width: 200px;
+  overflow: hidden;
+}
+
+.back {
+  color: aliceblue;
+  font-size: 1.5em;
+  padding: 0px;
+  margin: 10px 0px 10px 0px;
+}
+
+@keyframes flicker {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.backArrow {
+  height: 50px;
+  float: left;
+  margin-right: 10px;
+  animation-name: flicker;
+  animation-duration: 1s;
+  animation-iteration-count: infinite;
+  animation-direction: alternate;
+}

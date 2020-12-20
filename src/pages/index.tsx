@@ -1,5 +1,6 @@
 import * as React from "react"
 import {useEffect} from "react"
+import { Link } from "gatsby"
 import "./styles.css"
 import { gsap, SteppedEase } from "../../node_modules/gsap/index.js"
 import TextPlugin from 'gsap/TextPlugin'
@@ -26,6 +27,7 @@ import AdobeXDLogo from "../images/AdobeXDLogo.png"
 import AfterEffectsLogo from "../images/AfterEffectsLogo.png"
 import PhotoshopLogo from "../images/PhotoshopLogo.png"
 
+
 gsap.registerPlugin(TextPlugin)
 
 
@@ -49,6 +51,7 @@ const getAge = (dateString) => {
 
 const viewSize = window.matchMedia("(max-width: 1024px)")
 const profileText = `I am a ${getAge("1993/08/31")} years old Media Technology engineering student at Metropolia University of Applied Sciences.
+\n
 My interests are games, video productions, photography, web design, programming in general and arts & cooking.
 I plan to graduate in June 2022, and hopefully get a job that exploits my hobbies. 
 \n
@@ -190,16 +193,24 @@ const IndexPage = () => {
             <img className="logo" src={NodeCGLogo} alt="NodeCGLogo"/>
             <img className="logo" src={NodejsLogo} alt="NodejsLogo"/>
             <img className="logo" src={GSAPLogo} alt="GSAPLogo"/>
-            <img className="logo" src={CsharpLogo} alt="GSAPLogo"/>
-            <img className="logo" src={UnityLogo} alt="UnityLogo"/>
+            <Link to="/valhalladenied">
+              <img className="logo" src={CsharpLogo} alt="GSAPLogo"/>
+            </Link>
+            <Link to="/valhalladenied">
+              <img className="logo" src={UnityLogo} alt="UnityLogo"/>
+            </Link>
             <img className="logo" src={UnRealLogo} alt="UnRealLogo"/>
         </div>
           <div className="adobes" onMouseEnter={() => adobeShow()} onMouseLeave={() => hideAdobe()}>
             <img className="CreativeCloudLogo" src={Creativecloud} alt="CreativeCloudLogo"/>
-            <img className="adobelogo" src={PhotoshopLogo} alt="PhotoshopLogo"/>
+            <Link to="/photography">
+              <img className="adobelogo" src={PhotoshopLogo} alt="PhotoshopLogo"/>
+            </Link>
             <img className="adobelogo" src={IllustratorLogo} alt="IlluLogo"/>
             <img className="adobelogo" src={AdobeXDLogo} alt="XDLogo"/>
-            <img className="adobelogo" src={AdobePremiereLogo} alt="PremiereLogo"/>
+            <Link to="/videos">
+              <img className="adobelogo" src={AdobePremiereLogo} alt="PremiereLogo"/>
+            </Link>
             <img className="adobelogo" src={AfterEffectsLogo} alt="AfterEffectsLogo"/>
           </div>
     </>
