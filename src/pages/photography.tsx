@@ -2,7 +2,7 @@ import * as React from "react"
 import {useEffect} from "react"
 import { Link } from "gatsby"
 import "./photostyle.css"
-import backArrow from "../images/backArrow.png"
+import backArrow from "../../static/backArrow.png"
 
 const PhotoPage = () => { 
     useEffect (() =>{

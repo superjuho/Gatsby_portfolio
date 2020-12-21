@@ -4,39 +4,38 @@ import { Link } from "gatsby"
 import "./styles.css"
 import { gsap, SteppedEase } from "../../node_modules/gsap/index.js"
 import TextPlugin from 'gsap/TextPlugin'
-import Linkedin from "../images/Linkedin.png"
-import GitHub from "../images/githubLogo.png"
-import codeLogo from "../images/codeLogo.png"
-import Creativecloud from "../images/Creativecloud.png"
-import CsharpLogo from "../images/CsharpLogo.png"
-import CSSLogo from "../images/CSSlogo.png"
-import HTML5Logo from "../images/HTML5Logo.png"
-import javascriptLogo from "../images/javascripL.png"
-import GSAPLogo from "../images/GSAPLogo.png"
-import NodeCGLogo from "../images/NodeCGLogo.png"
-import NodejsLogo from "../images/NodejsLogo.png"
-import reactLogo from "../images/reactLogo.png"
-import SassLogo from "../images/SassLogo.png"
-import TypeScritLogo from "../images/TypeScritLogo.png"
-import SQL_Logo from "../images/SQL_Logo.png"
-import UnityLogo from "../images/UnityLogo.png"
-import UnRealLogo from "../images/UnrealLogo.png"
-import IllustratorLogo from "../images/IllustratorLogo.png"
-import AdobePremiereLogo from "../images/AdobePremiereLogo.png"
-import AdobeXDLogo from "../images/AdobeXDLogo.png"
-import AfterEffectsLogo from "../images/AfterEffectsLogo.png"
-import PhotoshopLogo from "../images/PhotoshopLogo.png"
-
+import Linkedin from "../../static/Linkedin.png"
+import GitHub from "../../static/githubLogo.png"
+import codeLogo from "../../static/codeLogo.png"
+import Creativecloud from "../../static/Creativecloud.png"
+import CsharpLogo from "../../static/CsharpLogo.png"
+import CSSLogo from "../../static/CSSlogo.png"
+import HTML5Logo from "../../static/HTML5Logo.png"
+import javascriptLogo from "../../static/javascripL.png"
+import GSAPLogo from "../../static/GSAPLogo.png"
+import NodeCGLogo from "../../static/NodeCGLogo.png"
+import NodejsLogo from "../../static/NodejsLogo.png"
+import reactLogo from "../../static/reactLogo.png"
+import SassLogo from "../../static/SassLogo.png"
+import TypeScritLogo from "../../static/TypeScritLogo.png"
+import SQL_Logo from "../../static/SQL_Logo.png"
+import UnityLogo from "../../static/UnityLogo.png"
+import UnRealLogo from "../../static/UnrealLogo.png"
+import IllustratorLogo from "../../static/IllustratorLogo.png"
+import AdobePremiereLogo from "../../static/AdobePremiereLogo.png"
+import AdobeXDLogo from "../../static/AdobeXDLogo.png"
+import AfterEffectsLogo from "../../static/AfterEffectsLogo.png"
+import PhotoshopLogo from "../../static/PhotoshopLogo.png"
+import { window } from 'browser-monads'
 
 gsap.registerPlugin(TextPlugin)
 
-
 let CodeShown: boolean = false
 let AdobeShown: boolean = false
+let CodeClicked: boolean = false
+let AdobeClicked: boolean = false
 
 const tl = gsap.timeline()
-
-
 
 const getAge = (dateString) => {
   const today = new Date()
@@ -50,6 +49,10 @@ const getAge = (dateString) => {
 }
 
 const viewSize = window.matchMedia("(max-width: 1024px)")
+const viewSizeS = window.matchMedia("(max-width: 400px")
+
+
+
 const profileText = `I am a ${getAge("1993/08/31")} years old Media Technology engineering student at Metropolia University of Applied Sciences.
 \n
 My interests are games, video productions, photography, web design, programming in general and arts & cooking.
@@ -78,7 +81,7 @@ const codesShow = () => {
     CodeShown = true
     const codes = document.querySelector(".codes")
     tl.to([codes], 1, {width: "70%"})
-  } else if (!CodeShown && viewSize.matches) {
+  } else if (!CodeShown && window.innerWidth < 1025 && window.innerWidth > 421) {
     CodeShown = true
     const codes = document.querySelector(".codes")
     const adobes = document.querySelector(".adobes")
@@ -86,7 +89,16 @@ const codesShow = () => {
     const aboutElement = document.querySelector(".sideDiv") 
     tl.to([profileElement, aboutElement], 1, {opacity: 0})
     tl.to([adobes], .5, {left: "200px"})
-    tl.to([codes], 1, {height: "70%", width: "50%"})
+    tl.to([codes], 1, {height: "70vh", width: "140px"})
+  } else if (!CodeShown && window.innerWidth < 421) {
+    CodeShown = true
+    const codes = document.querySelector(".codes")
+    const adobes = document.querySelector(".adobes")
+    const profileElement = document.querySelector(".profile")
+    const aboutElement = document.querySelector(".sideDiv") 
+    tl.to([profileElement, aboutElement], 1, {opacity: 0})
+    tl.to([adobes], .5, {left: "200px"})
+    tl.to([codes], 1, {height: "70vh", width: "90px"})
   }
 }
 
@@ -95,11 +107,20 @@ const hideCodes = () => {
     CodeShown = false
     const codes = document.querySelector(".codes")
     tl.to([codes], 1, {width: "70px"})
-  } else if (CodeShown && viewSize.matches) {
+  } else if (CodeShown && window.innerWidth < 1025 && window.innerWidth > 421) {
     CodeShown = false
     const codes = document.querySelector(".codes")
     const adobes = document.querySelector(".adobes")
     tl.to([codes], 1, {height: "70px", width: "70px"})
+    tl.to([adobes], .5, {left: "100px"})
+    const profileElement = document.querySelector(".profile")
+    const aboutElement = document.querySelector(".sideDiv") 
+    tl.to([profileElement, aboutElement], 1, {opacity: 1})
+  } else if (CodeShown && window.innerWidth < 421) {
+    CodeShown = false
+    const codes = document.querySelector(".codes")
+    const adobes = document.querySelector(".adobes")
+    tl.to([codes], 1, {height: "40px", width: "40px"})
     tl.to([adobes], .5, {left: "100px"})
     const profileElement = document.querySelector(".profile")
     const aboutElement = document.querySelector(".sideDiv") 
@@ -112,13 +133,22 @@ const adobeShow = () => {
     AdobeShown = true
     const adobes = document.querySelector(".adobes")
     tl.to([adobes], 1, {width: "50%"})
-  } else if(!AdobeShown && viewSize.matches) {
+  } else if(!AdobeShown && window.innerWidth < 1025 && window.innerWidth > 421) {
+    console.log("pieni ikkuna")
     AdobeShown = true
     const adobes = document.querySelector(".adobes")
     const profileElement = document.querySelector(".profile")
     const aboutElement = document.querySelector(".sideDiv") 
     tl.to([profileElement, aboutElement], 1, {opacity: 0})
-    tl.to([adobes], 1, {height: "50%"})
+    tl.to([adobes], 1, {height: "60vh"})
+  } else if (!AdobeShown && window.innerWidth < 421) {
+    console.log("Tosi pieni ikkuna")
+    AdobeShown = true
+    const adobes = document.querySelector(".adobes")
+    const profileElement = document.querySelector(".profile")
+    const aboutElement = document.querySelector(".sideDiv") 
+    tl.to([profileElement, aboutElement], 1, {opacity: 0})
+    tl.to([adobes], 1, {height: "60vh"})
   }
 } 
 
@@ -127,10 +157,17 @@ const hideAdobe = () => {
     AdobeShown = false
     const adobes = document.querySelector(".adobes")
     tl.to([adobes], 1, {width: "100px"})
-  } else if(AdobeShown && viewSize.matches) {
+  } else if(AdobeShown && window.innerWidth < 1025 && window.innerWidth > 421) {
     AdobeShown = false
     const adobes = document.querySelector(".adobes")
     tl.to([adobes], 1, {height: "70px"})
+    const profileElement = document.querySelector(".profile")
+    const aboutElement = document.querySelector(".sideDiv") 
+    tl.to([profileElement, aboutElement], 1, {opacity: 1})
+  } else if (AdobeShown && window.innerWidth < 421) {
+    AdobeShown = false
+    const adobes = document.querySelector(".adobes")
+    tl.to([adobes], 1, {height: "50px"})
     const profileElement = document.querySelector(".profile")
     const aboutElement = document.querySelector(".sideDiv") 
     tl.to([profileElement, aboutElement], 1, {opacity: 1})
@@ -143,6 +180,7 @@ const profile = () => {
   gsap.to("#text", {text: profileText, duration: 8, delay: 2, ease: "none"})
 }
 
+/*onMouseLeave={() => hideCodes()} */
 
 const IndexPage = () => {
   useEffect (() =>{
@@ -183,6 +221,10 @@ const IndexPage = () => {
         </div>
         <div className="codes" onMouseEnter={() => codesShow()} onMouseLeave={() => hideCodes()}>
             <img className="codeLogo" src={codeLogo} alt="CodeLogo"/>
+            {window.innerWidth < 1025 &&
+            <div className="dummyLogo">
+            </div>
+            }
             <img className="logo" src={SassLogo} alt="CSSLogo"/>
             <img className="logo" src={CSSLogo} alt="CSSLogo"/>
             <img className="logo" src={HTML5Logo} alt="HTML5Logo"/>
@@ -193,7 +235,7 @@ const IndexPage = () => {
             <img className="logo" src={NodeCGLogo} alt="NodeCGLogo"/>
             <img className="logo" src={NodejsLogo} alt="NodejsLogo"/>
             <img className="logo" src={GSAPLogo} alt="GSAPLogo"/>
-            <Link to="/valhalladenied">
+            <Link className="codeLink" to="/valhalladenied">
               <img className="logo" src={CsharpLogo} alt="GSAPLogo"/>
             </Link>
             <Link to="/valhalladenied">
@@ -203,15 +245,21 @@ const IndexPage = () => {
         </div>
           <div className="adobes" onMouseEnter={() => adobeShow()} onMouseLeave={() => hideAdobe()}>
             <img className="CreativeCloudLogo" src={Creativecloud} alt="CreativeCloudLogo"/>
-            <Link to="/photography">
+            <Link to="/photography" className="adobeLink">
               <img className="adobelogo" src={PhotoshopLogo} alt="PhotoshopLogo"/>
             </Link>
+            <Link to="/videos" className="adobeLink">
             <img className="adobelogo" src={IllustratorLogo} alt="IlluLogo"/>
+            </Link>
+            <Link to="/videos" className="adobeLink">
             <img className="adobelogo" src={AdobeXDLogo} alt="XDLogo"/>
-            <Link to="/videos">
+            </Link>
+            <Link to="/videos" className="adobeLink">
               <img className="adobelogo" src={AdobePremiereLogo} alt="PremiereLogo"/>
             </Link>
+            <Link to="/videos" className="adobeLink">
             <img className="adobelogo" src={AfterEffectsLogo} alt="AfterEffectsLogo"/>
+            </Link>
           </div>
     </>
     
